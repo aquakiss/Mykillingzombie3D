@@ -1,0 +1,52 @@
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+Build/
+UnityGenerated/
+Library/ScriptAssemblies
+Library/cache
+Library/metadata
+Library/previews
+Library/AssetImportState
+Library/AssetServerCacheV3
+Library/AssetVersioning.db
+Library/BuildPlayer.prefs
+Library/EditorUserBuildSettings.asset
+Library/FailedAssetImports.txt
+Library/InspectorExpandedItems.asset
+Library/MonoManager.asset
+Library/ScriptMapper
+Library/assetDatabase3
+Library/assetservercachev3
+Library/expandedItems
+Library/guidmapper
+Library/AnnotationManager
+Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.sln.docstates
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
