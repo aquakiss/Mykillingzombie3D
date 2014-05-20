@@ -10,4 +10,5 @@ public class color_ennemi : MonoBehaviour {
 		gameObject.renderer.material.color = Color.red;
 		GetComponent<NavMeshAgent>().destination = m_player.position;
 	}
+
 }

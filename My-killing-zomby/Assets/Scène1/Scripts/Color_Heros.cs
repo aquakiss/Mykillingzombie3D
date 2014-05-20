@@ -38,14 +38,26 @@ public class Color_Heros : MonoBehaviour {
 
 	void Update ()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire)
+		Vector3 bulletDirection = Vector3.zero;
+		if(Input.GetKeyDown(KeyCode.J)) bulletDirection = Vector3.left;
+		else if(Input.GetKeyDown(KeyCode.I)) bulletDirection = Vector3.forward;
+		else if(Input.GetKeyDown(KeyCode.L)) bulletDirection = Vector3.right;
+		else if(Input.GetKeyDown(KeyCode.K)) bulletDirection = Vector3.back;
+		//Debug.Log (bulletDirection);
+		bool isFirering = Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.I ) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L);
+
+		if (isFirering && Time.time > nextFire)
 		{
+			//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			nextFire = Time.time + fireRate;
-			Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation);
+			BulletSpawn.rotation = Quaternion.FromToRotation(Vector3.left,bulletDirection);
+			//Rigidbody clone;
+			Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation);// as Rigidbody;
+			//clone.velocity = transform.TransformDirection(bulletDirection * 10);
 		}
 	}
 }   
-		
+
 
 
 

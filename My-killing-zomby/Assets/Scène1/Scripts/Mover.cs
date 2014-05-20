@@ -7,16 +7,22 @@ public class Mover : MonoBehaviour {
 	void Start ()
 	{
 		rigidbody.velocity = transform.forward * speed;
+		// Destroy the rocket after 3 seconds if it doesn't get destroyed before then.
+		Destroy(gameObject, 3);
 	}
 
 	void OnTriggerEnter (Collider col)
 	{
-		if (col.gameObject.tag == "Ennemis") {
-			print ("collision avec player, je le tue");
-			//rigidbody2D.velocity = movements;
-		} else if (col.gameObject.tag == "Décor") {
-			print ("j'ai toucher un mur, je bouge");
-			//this.gameObject.transform.rotation;
+		if (col.gameObject.tag == "ennemy") {
+			Destroy(gameObject);
+			//Destroy(col.gameObject);
+		Enemy ennemy = col.gameObject.GetComponent<Enemy>() as Enemy;
+		if(ennemy != null)
+		{
+			ennemy.kill();
+		}
+		} else if (col.gameObject.tag == "terrain") {
+			Destroy(gameObject);
 		}
 	}
 }
