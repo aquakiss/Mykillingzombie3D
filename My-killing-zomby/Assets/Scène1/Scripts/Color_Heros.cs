@@ -25,7 +25,15 @@ public class Color_Heros : MonoBehaviour {
 
 	private Vector3 movement;
 
+	public GUIText gameOverText;
+
+	public bool over;
 	// Update is called once per frame
+
+	public void Start(){
+		over = false;
+	}
+
 	void FixedUpdate () {
 		gameObject.renderer.material.color = Color.blue;
 		float inputX = Input.GetAxis("Vertical");
@@ -56,40 +64,16 @@ public class Color_Heros : MonoBehaviour {
 			//clone.velocity = transform.TransformDirection(bulletDirection * 10);
 		}
 	}
-}   
 
-
-
-
-	/*
-	void Update ()
-	{
-		gameObject.renderer.material.color = Color.blue;
-		if (Input.GetButton("Fire1") && Time.time > nextFire)
-		{
-			nextFire = Time.time + fireRate;
-			Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation);
-			//audio.Play ();
+	public void OnCollisionEnter (Collision col){
+		if (col.gameObject.tag == "ennemy") {
+			Destroy (gameObject);
+			GameOver();
 		}
 	}
-	
-	void FixedUpdate ()
-	{
-		gameObject.renderer.material.color = Color.blue;
-		float inputX = Input.GetAxis ("Horizontal");
-		float inputZ = Input.GetAxis ("Vertical");
-		
-		movement = new Vector3 (inputX, 0.0f, inputZ);
-		rigidbody.velocity = movement;
-		
-		rigidbody.position = new Vector3 
-			(
-				Mathf.Clamp (rigidbody.position.x, boundary.xMin, boundary.xMax), 
-				0.0f, 
-				Mathf.Clamp (rigidbody.position.z, boundary.zMin, boundary.zMax)
-				);
-		
-		rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
-	}
-}	*/
 
+	public void GameOver(){
+		gameOverText.text = "Game Over!";
+		over = true;
+	}
+}
